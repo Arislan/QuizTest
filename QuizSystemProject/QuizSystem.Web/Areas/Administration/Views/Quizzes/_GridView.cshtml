@@ -1,0 +1,58 @@
+﻿@model SimpleDataPager<QuizAdminViewModel>
+<table class="grid-view">
+    <thead>
+        <tr>
+            <th class="size1">
+                @Html.SortLink(x => x.Category)
+            </th>
+            <th class="size4">
+                @Html.SortLink(x => x.Title)
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.Questions)
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.Creator)
+            </th>
+            <th class="size3">
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="5"> 
+                <div class="total-results">Total Results : @Model.TotalResults</div>
+                @Html.GetPageMenu()
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+        @if (Model.Items.Count() > 0)
+        {
+            foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Category</td>
+                    <td class="left">@item.Title</td>
+                    <td>@item.Questions</td>
+                    <td>@item.Creator</td>
+                    <td>
+                        <a href="/UserQuizzes/Edit?quizId=@item.Id" class="button">Edit</a>
+                        @*<a href="/Administration/Quizzes/Remove?quizId=@item.Id" class="button">Delete</a>*@
+                        <form class="compact" method="post" action="/Administration/Quizzes/Remove">
+                            <input type="hidden" name="quizId" value="@item.Id" />
+                            <input type="submit" class="button" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No Results Found</td>
+            </tr>
+        }
+    </tbody>
+</table>

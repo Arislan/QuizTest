@@ -1,0 +1,21 @@
+﻿@model QuizUpdateModel
+
+<div id="quiz-create-form-container">
+    <span id="quiz-create-trigger">Edit Quiz</span>
+    <form id="quiz-create-form" method="post" action="~/Quizzes/Edit">
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Edit your Quiz</legend>
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <div class="form-tab">
+                <label for="CategoryId">Category</label>
+                @Html.ValidationField(x => x.CategoryId, Html.BuildSelectMenu(ViewData["categories"] as IEnumerable<SelectListItem>))
+            </div>
+            <div class="form-tab">
+                <label for="Title">Title</label>
+                @Html.ValidationField(x => x.Title, "input", new { type = "text" })
+            </div>
+        </fieldset>
+        <input type="submit" value="Update" />
+    </form>
+</div>

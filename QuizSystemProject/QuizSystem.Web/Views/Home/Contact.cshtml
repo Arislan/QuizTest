@@ -1,0 +1,8 @@
+﻿@model QuizCreateModel
+<form method="post" action="/home/about">
+    <div class="form-tab">
+        @Html.ValidationField(x => x.Title, new HtmlElement("input", new { type = "input" }));
+    </div>
+
+    <input type="submit" value="Submit" />
+</form>

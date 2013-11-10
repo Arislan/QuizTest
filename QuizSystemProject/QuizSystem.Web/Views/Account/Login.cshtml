@@ -1,0 +1,74 @@
+@model QuizSystem.Web.Models.LoginViewModel
+
+<h2>Login</h2>
+@Html.ValidationSummary()
+<form id="register-form" method="post" action="/Account/Register">
+    @Html.AntiForgeryToken()
+    <div class="form-tab">
+        <label for="UserName">Username</label>
+        @Html.ValidationField(x => x.UserName, "input", new { type = "text" })
+    </div>
+    <div class="form-tab">
+        @Html.LabelFor(x => x.Password)
+        @Html.ValidationField(x => x.Password, "input", new { type = "password" })
+    </div>
+    <div>
+        @Html.LabelFor(x => x.RememberMe)
+        @Html.CheckBoxFor(x => x.RememberMe)
+    </div>
+    <input type="submit" class="accept-btn" value="Login" />
+</form>
+
+@*<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+<div class="row-fluid">
+    <div class="span6">
+        <section id="loginForm">
+            @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset class="form-horizontal">
+                    <legend>Use a local account to log in.</legend>
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.UserName)
+                            @Html.ValidationMessageFor(m => m.UserName, null, new { @class = "help-inline" })
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.PasswordFor(m => m.Password)
+                            @Html.ValidationMessageFor(m => m.Password, null, new { @class = "help-inline" })
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Log in" class="btn" />
+                    </div>
+                </fieldset>
+                <p>
+                    @Html.ActionLink("Register", "Register") if you don't have a local account.
+                </p>
+            }
+        </section>
+    </div>
+    <div class="span6">
+        <section id="socialLoginForm">
+
+            @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>*@
+@section Scripts {
+}

@@ -1,0 +1,295 @@
+﻿@model QuizCreateModel
+<div id="oho" style=" position:relative;background-color:blue; height:200px; width:100%;">
+
+</div>
+<div id="questions-container">
+    <div id="main"></div>
+
+</div>
+<script>
+  
+    var question = {
+        id: 22,
+        content: "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+        correctAnswerId: 4,
+        answers: [
+            { content: 'delete window', isCorrect: false },
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false },
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false },
+            { content: '01234', isCorrect: true },
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false }
+        ]
+    };
+
+    var arr = [{
+        id: 22,
+        content: "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+        correctAnswerId: 4,
+        answers: [
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false },
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false },
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false },
+            { content: '01234', isCorrect: true },
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false }
+        ]
+    }, {
+        id: 22,
+        content: "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+        correctAnswerId: 4,
+        answers: [
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false },
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false },
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false },
+            { content: '01234', isCorrect: true },
+            { content: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789', isCorrect: false }
+        ]
+    }];
+
+    var cc = "abcdefghi jklmnoprstufx523012345678901234567890123456789012                 ";
+    var arr = [];
+    var str = "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789";
+
+    function gen(len) {
+        var other = '';
+        for (var i = 0; i < len; i++) {
+            var d = cc.charAt(Math.floor(Math.random() * cc.length));
+
+            if (Math.floor(Math.random() * 10) > 5) {
+                d = d.toUpperCase();
+            }
+
+            other += d;
+        }
+
+        return other;
+    }
+
+    for (var i = 0; i < 100; i++) {
+        var obj = {};
+
+        obj.id = i + 1;
+        obj.c = i + '<br>' + gen(400); //+ str; //str.substr(0, Math.floor(Math.random() * 300 + 10));
+        obj.r = gen(100);
+        obj.a = [];
+        for (var j = 0; j < 5; j++) {
+            obj.a.push('012345678901234567890123  4567890123456789012345678901234567890123456789012345678901234567890123456789');
+        }
+
+        arr.push(obj);
+    }
+
+    //var st = '[{"id":1,"firstName":"Cari","lastName":"Alix","age":16,"grade":"11 B","school":"Cedarwood High"},{"id":2,"firstName":"Vernia","lastName":"Gower","age":15,"grade":"8 B","school":"Northvale High"},{"id":3,"firstName":"Carola","lastName":"Sipp","age":17,"grade":"10 C","school":"Riverbank High"},{"id":4,"firstName":"Fidela","lastName":"Mcfee","age":17,"grade":"9 C","school":"Riverdell High"},{"id":5,"firstName":"Joana","lastName":"Brimer","age":16,"grade":"9 D","school":"Ashton High"},{"id":6,"firstName":"Karleen","lastName":"Mcphee","age":15,"grade":"10 B","school":"Eppingswood High"},{"id":7,"firstName":"Ammie","lastName":"Mcpeters","age":15,"grade":"11 A","school":"Riverdell High"},{"id":8,"firstName":"Christel","lastName":"Davey","age":16,"grade":"11 A","school":"Arrowsmith High"},{"id":9,"firstName":"Wiley","lastName":"Ruggerio","age":17,"grade":"9 A","school":"Crosswell Secondary"},{"id":10,"firstName":"Zonia","lastName":"Pham","age":17,"grade":"9 D","school":"Easton High"},{"id":11,"firstName":"Maye","lastName":"Manion","age":17,"grade":"10 D","school":"Arrowsmith High"},{"id":12,"firstName":"Devon","lastName":"Buelow","age":17,"grade":"8 A","school":"Cedarwood High"},{"id":13,"firstName":"Carletta","lastName":"Saragosa","age":16,"grade":"8 B","school":"Easton High"},{"id":14,"firstName":"Briana","lastName":"Brisker","age":16,"grade":"11 B","school":"Melrose Public School"},{"id":15,"firstName":"Claretha","lastName":"Benesh","age":16,"grade":"10 C","school":"Easton High"},{"id":16,"firstName":"Sherrill","lastName":"Casas","age":17,"grade":"10 D","school":"Sir Henry Barnet High"},{"id":17,"firstName":"Karisa","lastName":"Gonsales","age":16,"grade":"9 B","school":"Easton High"},{"id":18,"firstName":"Cleora","lastName":"Castonguay","age":16,"grade":"8 A","school":"Colby High"},{"id":19,"firstName":"Thaddeus","lastName":"Rochon","age":16,"grade":"10 C","school":"Arrowsmith High"},{"id":20,"firstName":"Tashia","lastName":"Alcorn","age":17,"grade":"11 C","school":"Sir Henry Barnet High"},{"id":21,"firstName":"Lavonda","lastName":"Shuster","age":17,"grade":"8 A","school":"Northvale High"},{"id":22,"firstName":"Ada","lastName":"Sanderlin","age":16,"grade":"11 A","school":"Colby High"},{"id":23,"firstName":"Stanley","lastName":"Mcwain","age":15,"grade":"9 D","school":"Westbank High"},{"id":24,"firstName":"Renay","lastName":"Cornell","age":17,"grade":"9 B","school":"Riverbank High"},{"id":25,"firstName":"Shoshana","lastName":"Boswell","age":17,"grade":"11 D","school":"Melrose Public School"},{"id":26,"firstName":"Jestine","lastName":"Shores","age":17,"grade":"11 C","school":"Northvale High"},{"id":27,"firstName":"Jennifer","lastName":"Clair","age":15,"grade":"9 C","school":"Riverdell High"},{"id":28,"firstName":"Marni","lastName":"Hein","age":16,"grade":"8 D","school":"Northvale High"},{"id":29,"firstName":"Jamal","lastName":"Hurt","age":17,"grade":"10 C","school":"Cedarwood High"},{"id":30,"firstName":"Demetra","lastName":"Cardillo","age":16,"grade":"9 C","school":"Riverdell High"},{"id":31,"firstName":"Hung","lastName":"Bail","age":15,"grade":"9 A","school":"Cedarwood High"},{"id":32,"firstName":"Heriberto","lastName":"Arciniega","age":15,"grade":"11 B","school":"Riverbank High"},{"id":33,"firstName":"Kathryne","lastName":"Bate","age":15,"grade":"9 C","school":"Cedarwood High"},{"id":34,"firstName":"Librada","lastName":"Foraker","age":15,"grade":"8 A","school":"Eppingswood High"},{"id":35,"firstName":"Louetta","lastName":"Petrik","age":16,"grade":"10 C","school":"Riverbank High"},{"id":36,"firstName":"Allyson","lastName":"Brannigan","age":15,"grade":"9 C","school":"Sir Henry Barnet High"},{"id":37,"firstName":"Piper","lastName":"Marlowe","age":16,"grade":"9 B","school":"Sir Henry Barnet High"},{"id":38,"firstName":"Moshe","lastName":"Oelke","age":17,"grade":"9 C","school":"Ashton High"},{"id":39,"firstName":"Petra","lastName":"Tom","age":15,"grade":"8 B","school":"Crosswell Secondary"},{"id":40,"firstName":"Leeanne","lastName":"Lucien","age":17,"grade":"10 B","school":"Riverbank High"},{"id":41,"firstName":"Bette","lastName":"Raffield","age":15,"grade":"10 C","school":"Cedarwood High"},{"id":42,"firstName":"Pinkie","lastName":"Phares","age":16,"grade":"11 C","school":"Eppingswood High"},{"id":43,"firstName":"Kiley","lastName":"Killeen","age":16,"grade":"11 B","school":"Eppingswood High"},{"id":44,"firstName":"Zachariah","lastName":"Lorance","age":17,"grade":"9 C","school":"Sir Henry Barnet High"},{"id":45,"firstName":"Cassandra","lastName":"Cargile","age":17,"grade":"8 A","school":"Melrose Public School"},{"id":46,"firstName":"Shalon","lastName":"Dulmage","age":16,"grade":"9 A","school":"Cedarwood High"},{"id":47,"firstName":"Audrey","lastName":"Mcghie","age":17,"grade":"9 C","school":"Cedarwood High"},{"id":48,"firstName":"Woodrow","lastName":"Dieter","age":17,"grade":"10 A","school":"Cedarwood High"},{"id":49,"firstName":"Terry","lastName":"Jonas","age":15,"grade":"9 A","school":"Arrowsmith High"},{"id":50,"firstName":"Adele","lastName":"Dowd","age":17,"grade":"10 C","school":"Eppingswood High"},{"id":51,"firstName":"Diane","lastName":"Forbush","age":17,"grade":"10 C","school":"Colby High"},{"id":52,"firstName":"Wendie","lastName":"Andres","age":15,"grade":"11 B","school":"Cedarwood High"},{"id":53,"firstName":"Ashleigh","lastName":"Bjornson","age":16,"grade":"9 C","school":"Crosswell Secondary"},{"id":54,"firstName":"Kendal","lastName":"Doolan","age":16,"grade":"11 C","school":"Riverdell High"},{"id":55,"firstName":"Laurine","lastName":"Bridgett","age":16,"grade":"10 A","school":"Sir Henry Barnet High"},{"id":56,"firstName":"Cher","lastName":"Ritenour","age":16,"grade":"10 A","school":"Riverdell High"},{"id":57,"firstName":"Yun","lastName":"Conely","age":17,"grade":"9 C","school":"Crosswell Secondary"},{"id":58,"firstName":"Arden","lastName":"Vanalstyne","age":16,"grade":"9 B","school":"Riverbank High"},{"id":59,"firstName":"Buford","lastName":"Hand","age":16,"grade":"10 D","school":"Cedarwood High"},{"id":60,"firstName":"Alverta","lastName":"Lamphear","age":17,"grade":"8 D","school":"Riverdell High"},{"id":61,"firstName":"Kanesha","lastName":"Wrench","age":17,"grade":"10 B","school":"Ashton High"},{"id":62,"firstName":"Johnsie","lastName":"Lorentzen","age":17,"grade":"10 B","school":"Arrowsmith High"},{"id":63,"firstName":"Jenna","lastName":"Werner","age":17,"grade":"9 A","school":"Sir Henry Barnet High"},{"id":64,"firstName":"Autumn","lastName":"Lees","age":16,"grade":"10 B","school":"Riverbank High"},{"id":65,"firstName":"Robyn","lastName":"Aguilar","age":16,"grade":"10 A","school":"Crosswell Secondary"},{"id":66,"firstName":"Lizette","lastName":"Haberkorn","age":16,"grade":"11 B","school":"Riverbank High"},{"id":67,"firstName":"Cindy","lastName":"Tittle","age":15,"grade":"10 D","school":"Cedarwood High"},{"id":68,"firstName":"Giovanni","lastName":"Hensel","age":17,"grade":"11 D","school":"Riverbank High"},{"id":69,"firstName":"Karole","lastName":"Poole","age":17,"grade":"9 B","school":"Melrose Public School"},{"id":70,"firstName":"Belia","lastName":"Hipps","age":15,"grade":"10 D","school":"Westbank High"},{"id":71,"firstName":"Elayne","lastName":"Menefee","age":15,"grade":"8 D","school":"Riverbank High"},{"id":72,"firstName":"Ernestina","lastName":"Kimery","age":15,"grade":"8 C","school":"Sir Henry Barnet High"},{"id":73,"firstName":"Nevada","lastName":"Alvarenga","age":15,"grade":"10 A","school":"Sir Henry Barnet High"},{"id":74,"firstName":"Rachael","lastName":"Benevides","age":15,"grade":"9 B","school":"Riverdell High"},{"id":75,"firstName":"Jacelyn","lastName":"Bouie","age":15,"grade":"9 B","school":"Ashton High"},{"id":76,"firstName":"Shantell","lastName":"Ozment","age":17,"grade":"10 B","school":"Colby High"},{"id":77,"firstName":"Chuck","lastName":"Fett","age":15,"grade":"11 B","school":"Easton High"},{"id":78,"firstName":"Raphael","lastName":"Bunch","age":15,"grade":"10 D","school":"Colby High"},{"id":79,"firstName":"Olivia","lastName":"Talbott","age":17,"grade":"11 B","school":"Ashton High"},{"id":80,"firstName":"Jeraldine","lastName":"Mcguffin","age":15,"grade":"9 D","school":"Riverdell High"},{"id":81,"firstName":"Tereasa","lastName":"Hinson","age":15,"grade":"11 C","school":"Easton High"},{"id":82,"firstName":"Paulene","lastName":"Laymon","age":16,"grade":"11 A","school":"Arrowsmith High"},{"id":83,"firstName":"Ariel","lastName":"Schurr","age":17,"grade":"9 B","school":"Colby High"},{"id":84,"firstName":"Rosia","lastName":"Rood","age":16,"grade":"9 B","school":"Crosswell Secondary"},{"id":85,"firstName":"Jeri","lastName":"Sykes","age":17,"grade":"11 D","school":"Easton High"},{"id":86,"firstName":"Tanna","lastName":"Yerkes","age":17,"grade":"9 C","school":"Crosswell Secondary"},{"id":87,"firstName":"Sherika","lastName":"Sterrett","age":17,"grade":"9 A","school":"Sir Henry Barnet High"},{"id":88,"firstName":"Ladawn","lastName":"Rota","age":17,"grade":"8 C","school":"Riverdell High"},{"id":89,"firstName":"Wilton","lastName":"Sandage","age":16,"grade":"10 B","school":"Riverdell High"},{"id":90,"firstName":"Myrtie","lastName":"Betterton","age":17,"grade":"8 B","school":"Ashton High"},{"id":91,"firstName":"Cindie","lastName":"Hudgins","age":17,"grade":"11 B","school":"Riverdell High"},{"id":92,"firstName":"Nilda","lastName":"Kamrowski","age":15,"grade":"11 C","school":"Crosswell Secondary"},{"id":93,"firstName":"Gilberto","lastName":"Mcintire","age":16,"grade":"8 C","school":"Arrowsmith High"},{"id":94,"firstName":"Lakeshia","lastName":"Mundell","age":16,"grade":"10 D","school":"Riverdell High"},{"id":95,"firstName":"Fannie","lastName":"Dexter","age":15,"grade":"8 B","school":"Easton High"},{"id":96,"firstName":"Penni","lastName":"Townsel","age":17,"grade":"8 C","school":"Colby High"},{"id":97,"firstName":"Vern","lastName":"Thoman","age":17,"grade":"10 C","school":"Cedarwood High"},{"id":98,"firstName":"Romaine","lastName":"Nowlin","age":15,"grade":"10 C","school":"Crosswell Secondary"},{"id":99,"firstName":"Vashti","lastName":"Liptak","age":15,"grade":"10 B","school":"Riverbank High"},{"id":100,"firstName":"Rowena","lastName":"Soluri","age":15,"grade":"11 A","school":"Colby High"}]'
+    
+    var questionsManager = Class.create(function (data, qId) {
+        this.quizId = qId;
+        this.data = data;
+        this.container = document.createElement('ul');
+        this.container.id = 'questions-list';
+        this.popUp = this.initPopUp();
+        this.active = {};
+        var that = this;
+        eventUtils.setEvent(this.container, 'mouseover', function (evt) {
+            var el = evt.target;
+            for (var i = 0; i < 3; i++) {
+                if (!el) { break; }
+
+                if (el.tagName == 'LI') {
+                    if (el.id != that.active.id) {
+                        that.active.className = ' ';
+                        that.active = el;
+                        that.active.className = 'active-question';
+                        that.updatePopUp(parseInt(that.active.id.substr(2)));
+                        that.active.appendChild(that.popUp);
+                    }
+
+                    break;
+                }
+
+                el = el.parentElement;
+            }
+
+            eventUtils.stopPropagation(evt);
+        });
+
+        eventUtils.setEvent(this.container, 'mouseout', function (evt) {
+            var el = evt.toElement;
+            if (el) {
+                for (var i = 0; i < 6; i++) {
+                    if (!el) {
+                        break;
+                    }
+
+                    if (el.tagName == 'UL') {
+                        eventUtils.stopPropagation(evt);
+                        return;
+                    }
+
+                    el = el.parentElement;
+                }
+            }
+
+            that.active.className = ' ';
+            if (that.active.childNodes && that.active.childNodes.length == 2) {
+                that.active.removeChild(that.popUp);
+                that.active = {};
+            }
+            eventUtils.stopPropagation(evt);
+        });
+    }, {
+        render: function () {
+            for (var i = 0; i < this.data.length; i++) {
+                this.renderQuestion(i);
+            }
+        },
+        renderQuestion: function (index) {
+            this.container.appendChild(document.createElement('li'));
+            this.container.lastChild.id = 'q-' + index;
+            this.container.lastChild.appendChild(document.createElement('div'));
+            this.container.lastChild.lastChild.className = 'clearfix';
+            this.container.lastChild.lastChild.appendChild(document.createElement('h4'));
+            this.container.lastChild.lastChild.firstChild.innerHTML = index + 1;
+            //this.container.lastChild.appendChild(document.createElement('div'));
+            //this.container.lastChild.lastChild.className = 'question-container';
+            this.container.lastChild.lastChild.appendChild(document.createElement('p'));
+            this.addText(this.container.lastChild.lastChild.lastChild, this.data[index].c);
+        },
+        updateQuestion: function (index, question) {
+            if (index || index == 0) {
+                this.data[index] = question;
+                this.addText(this.container.childNodes[index].lastChild, this.data[index].c);
+            } else {
+                this.data.push(question);
+                this.renderQuestion(this.data.length - 1);
+            }
+        },
+        deleteQuestion: function (index) {
+            this.data.splice(index, 1);
+            for (var i = index; i < this.data.length; i++) {
+                this.container.childNodes[i].firstChild.innerHTML = i + 1;
+                this.addText(this.container.childNodes[i].firstChild.nextSibling, this.data[i].content);
+            }
+            this.container.removeChild(this.container.lastChild);
+        },
+        initPopUp: function () {
+            var that = this;
+
+            var container = document.createElement('div');
+            container.id = 'question-pop-up';
+
+            container.appendChild(document.createElement('div'));
+            container.lastChild.className = 'clearfix';
+            container.lastChild.appendChild(document.createElement('span'));
+            container.lastChild.lastChild.innerHTML = 'Total Answers : ';
+            container.lastChild.appendChild(document.createElement('span'));
+            container.lastChild.lastChild.className = 'total-answers';
+
+            container.appendChild(document.createElement('div'));
+            container.lastChild.className = 'answer-box clearfix';
+            container.lastChild.appendChild(document.createElement('span'));
+            container.lastChild.lastChild.innerHTML = 'Right Answer :';
+            container.lastChild.appendChild(document.createElement('div'));
+            container.lastChild.lastChild.className = 'answer-wrapper';
+            container.lastChild.lastChild.appendChild(document.createElement('p'));
+
+            container.appendChild(document.createElement('div'));
+            container.lastChild.className = 'action-panel clearfix';
+            container.lastChild.appendChild(htmlUtils.button('Edit', function () {
+                var index = parseInt(container.parentElement.id.substring(2));
+                var panel = questionEditPanel.create(
+                    that.questionToModel(that.data[index]), function (updated) {
+                        //that.updateQuestion(index, updated);
+                        //htmlUtils.hideOverlayBox();
+
+                       repository.questions.create(that.quizId, updated)
+                       .then(function (newQuestion) {
+                           htmlUtils.overlayMessage({ level: 2, autoHide: true });
+                           that.updateQuestion(index, JSON.parse(newQuestion));
+                           htmlUtils.hideOverlayBox();
+                       }, function (error) {
+                           htmlUtils.overlayMessage({ message: error, level: 2, autoHide: true, isError: true, duration: 2000 });
+                       });
+                    }, function () {
+                        htmlUtils.hideOverlayBox();
+                    });
+
+                htmlUtils.showInOverlayBox(panel);
+                eventUtils.fireEvent(container.parentElement, 'mouseout');
+            }));
+
+            container.lastChild.appendChild(htmlUtils.button('Delete', function () {
+                var confirmWindow = htmlUtils.confirmWindow('Do you want to DELETE this Question ?',
+                function () {
+                    that.deleteQuestion(parseInt(container.parentElement.id.substring(2)));
+                    htmlUtils.showContent(container, true);
+                }, function () {
+                    htmlUtils.showContent(container, true);
+                });
+
+                htmlUtils.hideContent(container, true);
+                container.appendChild(confirmWindow);
+            }));
+            
+            return container;
+        },
+        updatePopUp: function (index) {
+            this.popUp.childNodes[0].lastChild.innerHTML = this.data[index].a.length + 1;
+            this.popUp.childNodes[1].lastChild.lastChild.innerHTML =
+                htmlUtils.escape(this.data[index].r);
+
+            if (this.popUp.lastChild.className == 'confirm-window') {
+                this.popUp.removeChild(this.popUp.lastChild);
+                htmlUtils.showContent(this.popUp, true);
+            }
+        },
+        getCreateButton: function () {
+            var that = this;
+            var container = document.createElement('div');
+            container.appendChild(htmlUtils.button('Create New Question', function () {
+                var panel = questionEditPanel.create({}, function (created) {
+                    that.updateQuestion(index, created);
+                    htmlUtils.hideOverlayBox();
+                    //repository.questions.create(that.quizId, created).then(
+                    //    function (s) {
+                    //        that.updateQuestion(null, s);
+                    //        htmlUtils.overlayMessage({ level : 2, autoHide : true});
+                    //        htmlUtils.hideOverlayBox();
+                    //    }, function (e) {
+                    //        htmlUtils.overlayMessage({ message : e, isError: true, autoHide : true, level: 2 });
+                    //    });
+                   
+                }, function () {
+                    htmlUtils.hideOverlayBox();
+                })
+                htmlUtils.showInOverlayBox(panel);
+                eventUtils.fireEvent(container.parentElement, 'mouseout');
+            }));
+            container.firstChild.className = 'large-btn';
+            return container;
+        },
+        addText: function (el, content) {
+              el.innerHTML= htmlUtils.escape(content);
+        },
+        questionToModel: function (question) {
+            var obj = {};
+            obj.id = question.id;
+            obj.content = question.c;
+            obj.answers = [];
+            for (var i = 0; i < question.a.length; i++) {
+                obj.answers.push({content : question.a[i], isCorrect : false});
+            }
+            obj.answers.unshift({ content: question.r, isCorrect: true });
+            return obj;
+        },
+        modelToQuestion: function (model) {
+
+        }
+    });
+
+    var p = new questionsManager(arr, '@ViewBag.id');
+    document.getElementById('main').appendChild(p.getCreateButton());
+    document.getElementById('main').appendChild(p.container);
+    p.render();
+    console.log(p.quizId);
+   
+</script>
+

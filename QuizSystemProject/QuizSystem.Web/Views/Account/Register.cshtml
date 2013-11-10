@@ -1,0 +1,67 @@
+@model QuizSystem.Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register Your Account . . .</h2>
+@Html.ValidationSummary();
+<form id="register-form" method="post" action="/account/register">
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Fill out the form : </legend>
+        <div class="form-tab">
+            @Html.LabelFor(x => x.UserName)
+                @Html.ValidationField(x => x.UserName, "input", new { type = "text" })
+        </div>
+        <div class="form-tab">
+            @Html.LabelFor(x => x.Password)
+                @Html.ValidationField(x => x.Password, "input", new { type = "password" })
+        </div>
+        <div class="form-tab">
+            @Html.LabelFor(x => x.ConfirmPassword)
+                @Html.ValidationField(x => x.ConfirmPassword, "input", new { type = "password" })
+        </div>
+        <div class="form-tab">
+            @Html.LabelFor(x => x.UserRole)
+                @Html.ValidationField(x => x.UserRole, Html.BuildSelectMenu(
+                new List<SelectListItem> { 
+                    new SelectListItem { Text = "Role", Value= null, Selected = true},
+                    new SelectListItem { Text = "User", Value = "User"}, 
+                    new SelectListItem { Text = "MetaAdmin", Value = "MetaAdmin"}, 
+                    new SelectListItem { Text = "Admin", Value = "Admin"} 
+                    }))
+        </div>
+    </fieldset>
+    <input type="submit" value="Register"/>
+</form>
+
+
+@section Scripts {
+    <script>
+        var id = 'register-form';
+        var inputs = document.getElementById(id).getElementsByTagName('input');
+
+        var btn;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type == 'submit') {
+                btn = inputs[i];
+                break;
+            }
+        }
+
+        eventUtils.setEvent(btn, 'click', function (evt) {
+            var isValid = javascriptValidator.validateContainer('register-form', 2);
+            if (!isValid) {
+                //this.disabled = true;
+                eventUtils.preventDefault(evt);
+
+            } else {
+               // this.disabled = false;
+            }
+        })
+
+        javascriptValidator.dynamicValidation('register-form');
+       
+    </script>
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+}

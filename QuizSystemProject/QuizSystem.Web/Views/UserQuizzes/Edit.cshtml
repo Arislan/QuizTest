@@ -1,0 +1,20 @@
+﻿@model QuizUpdateModel
+
+@Html.Partial("_Update", Model)
+
+<div id="questions-container">
+</div>
+
+@section Scripts {
+<script src="~/Scripts/custom/quiz-author-edit.js"></script>
+<script src="~/Scripts/custom/quiz-edit-lib.js"></script>
+<script>
+    (function () {
+        var manager = new QuestionsManager(@Model.Id);
+        manager.render();
+        var container = document.getElementById('questions-container');
+        container.appendChild(manager.getCreateButton());
+        container.appendChild(manager.container);
+    }());
+</script>
+}
